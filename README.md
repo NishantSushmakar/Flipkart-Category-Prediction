@@ -15,8 +15,25 @@ For Eg: "Footwear >> Women\'s Footwear >> Casual Shoes >> Boots" **Footwear was 
 - But there were some Category tree such as **Eternal Gandhi Super Series Crystal Paper Weight...** which don't have a specific category on the site also
 <img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/Capture.PNG>
 
-- Checking For the NULL Values in Description 2 Rows don't have a description and by checking on the flipkart site also i didn't find any description on them so i drop those two rows because they won't affect the performance significantly.
+- Checked For the NULL Values in Description, two Rows don't have a description and by checking on the flipkart site also i didn't find any description on them so i drop those two rows because they won't affect the performance significantly.
 
 <img src =https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/img2.PNG>
 
 - The Columns that look relevant for the problem statement were only taken into account and a new dataframe was created using *description* and *Category of Product*
+- The *Cateogry of Product* posed a severe problem because some of the category tree contained only the product name and were not mentioned properly for eg : *Rasav Jewels Yellow Gold Diamond 18 K Rin* . Now one can figure out this product belongs to the category of Jewellery so i observed different categories same as mentioned in the example and found out the keywords which will allow me to identify those category into one main category , this was important as it help to reduce the number of classes present in the category.
+- After checking these categories and appending them in the main categories there were still some categories left which could not be identified to which category to assign to so all the categories with less than equal to 84 value count were merged into one main category called **Miscellaneous**. Finally I was left with 19 Classes to predict which were earlier more than 200.
+
+## Text Preprocessing
+- While observing the descriptions through the help of visualizations i found out that there were some irrelvant words such as 'rs','flipkartcom','free','shipping','product','genuine','delivery','flipkart','cash','best','price','detail','buy','day','relpacement','guarantee' ,  these words were included in my custom stopwords to be removed from the text.
+- First step was to remove any contractions in the words such as didn't => did not and for that a contraction library in python was used.
+- Seond step was to remove all the html tags and links present in the description 
+- Third step was to lowercase every word in the description as **WORD** and **word** would be considered two different words during the vectorisation even though they are the same. 
+- Removed all the digits from the description because they won't provide any type of value to our descriptions.
+- Removed all stopwords present in the custom stopwords list i made and also what is already present in the spacy stopwords vocab.
+- Regular expression were used to remove all the punctuations , extra white spaces , extra newline characters and extra tabs in the descriptions.
+- After Cleaning the Description Lemmatization was done overall the words instead of Stemming as Lemmatization keeps the words which are present in the dictionary and have a meaning instead of stemming it aggressively cut shorts the word to one without meaning.Lemmaitzation was done by making the text into a spacy object and lemma was then extracted from it.<br>
+
+After Lemmatization the vocab size was 23042 (i.e 23042 unique words in the corpus).
+
+
+
