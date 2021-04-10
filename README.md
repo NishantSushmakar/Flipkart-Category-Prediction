@@ -1,5 +1,7 @@
 # Flipkart-Category-Prediction
-
+## How to Run
+- Install all the dependencies 
+- Clone the Jupyter Notebook and Run All the Cells.
 ## About Dataset
 * The Dataset Contains 20,000 Datapoints with 15 features.
 * The features were *uniq_id*, *crawl_timestamp*, *product_url*, *product_name*,
