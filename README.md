@@ -39,7 +39,7 @@ After Lemmatization the vocab size was 23042 (i.e 23042 unique words in the corp
 Predicting 19 Categories is a Multi class problem and Measuring the effectiveness of the model was done through *F1 Macro Score* which Averages with equal weight to f1 score of every class because it gives equal importance of prediction of each class , *accuracy* can be misleading in this problem statement with imbalanced categories as it can predict the majority accuracy correctly and leaving the minority classes and giving a higher accuracy in such cases.
 
 ## Validation Strategy 
-^Image of Classes<br>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/classes.PNG><br>
 As the Category of Product were skewed (i.e imbalanced) Stratified K fold cross validation seemed more relevant as the random cross validation can choose all the majority classes in one fold giving a false representation of the population while training and testing. K was choosen to be 5 as 20% of data could be validated upon.
 
 # Experiments
@@ -48,8 +48,9 @@ As the Category of Product were skewed (i.e imbalanced) Stratified K fold cross 
 Vectorisation of Bag of Words gave an array with feature of 23042 , due to the problem of curse of dimensionality i reduced the dimension of features to 1600 using PCA(principal component analysis) after normalizing it because it almost preserved 90% of information. <br>
 The Supervised classification algorithm such as Random Forest,KNN,Gaussian Naive Bayes,Logistic Regression, Support Vector Machines.<br>
 Results :<br>
-
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp1train.PNG><br>
 The fold score in the table are calculated in such a way that if fold 1 is stated then fold 1 will be taken for testing(validation score) and rest all the folds are used for the training score.<br>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp1val.PNG><br>
 
 SVM clearly is much effective in classification than other algorithms with 0.939 F1 Score and then with slight difference Logistic Regression also can be effective algorithm for prediction, Gaussian Naive Bayes performed poorly on the data as it has strong assumption of normal distribution on features where as knn performed also good but not above 0.88 F1 score , random forest overfits the data.
 
