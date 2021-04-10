@@ -94,12 +94,38 @@ Results: <br>
 PCA is performing better than SVD as the classification algorithms are overfitting and are not generalized to predict on the testing dataset as seen in the validation score.
 
 ## 6. Applying LSTM along with GloVe Embedding Layer on the corpus
-GloVe Embedding Vectors are used to make a dictionary where key are words and 50 dimensional vectors are values.Then the best fold i.e fold=3 has given me optimum results is used to test the data and rest all the folds are used to train.<br>
+GloVe Embedding Vectors are used to make a dictionary where key are words and 50 dimensional vectors are values.Then the best fold i.e fold=3 has given me optimum results that is used to test the data and rest all the folds are used to train.<br>
 
 Results:<br>
 F1 Score = 0.02526075782273468
 
 The results were very poor as the LSTM layers are not generalizing on the data.
+
+## Hyperparameter tuning
+Bayesian optimzization was used to Optimize the Logistic Regression and SVC using the hyperopt library in Python and the objective function to minimise was 1-max(f1_score) on the cross validation.<br>
+Result: <br>
+**Logistic Regression**<br>
+ Best Parameters : penalty='l2',C=2.6161416743518022,solver='saga',max_iter=694<br>
+ F1 Score : 0.9443469041977183<br>
+ 
+ **Support Vector Classifiers**<br>
+ Best Parameters : C=2.649745774439495, decision_function_shape='ovo', gamma='auto',kernel='linear<br>
+ F1 Score : 0.955412917351743<br>
+
+## Conclusion
+SVC proved to be better algorithm for the problem statement but it takes a lot of computational time to train using SVC therefore one can also consider Logistic Regression.
+
+## What more i wanted to do
+As the deadline permitted me to perform these six experiments here are the list of experiments i want to do on this dataset.
+- Perform CNN on the Images provided in the dataset for classification
+- Use Product Name along with Description to make another corpus
+- All the experiments were done using unigram but also take into account bigrams and trigrams for computation .
+- Use Word2vec also to try with LSTM 
+- Use tsne on the data to check if the data could be visualise and Classified by the plots.
+
+ 
+ 
+
 
 
 
