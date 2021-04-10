@@ -33,7 +33,30 @@ For Eg: "Footwear >> Women\'s Footwear >> Casual Shoes >> Boots" **Footwear was 
 - Regular expression were used to remove all the punctuations , extra white spaces , extra newline characters and extra tabs in the descriptions.
 - After Cleaning the Description Lemmatization was done overall the words instead of Stemming as Lemmatization keeps the words which are present in the dictionary and have a meaning instead of stemming it aggressively cut shorts the word to one without meaning.Lemmaitzation was done by making the text into a spacy object and lemma was then extracted from it.<br>
 
-After Lemmatization the vocab size was 23042 (i.e 23042 unique words in the corpus).
+After Lemmatization the vocab size was 23042 (i.e 23042 unique words in the corpus).<br>
+
+## Evaluation Metric
+Predicting 19 Categories is a Multi class problem and Measuring the effectiveness of the model was done through *F1 Macro Score* which Averages with equal weight to f1 score of every class because it gives equal importance of prediction of each class , *accuracy* can be misleading in this problem statement with imbalanced categories as it can predict the majority accuracy correctly and leaving the minority classes and giving a higher accuracy in such cases.
+
+## Validation Strategy 
+^Image of Classes<br>
+As the Category of Product were skewed (i.e imbalanced) Stratified K fold cross validation seemed more relevant as the random cross validation can choose all the majority classes in one fold giving a false representation of the population while training and testing. K was choosen to be 5 as 20% of data could be validated upon.
+
+# Experiments
+
+## 1. Applying Machine Learning Algorithms with Bag Of Words 
+Vectorisation of Bag of Words gave an array with feature of 23042 , due to the problem of curse of dimensionality i reduced the dimension of features to 1600 using PCA(principal component analysis) after normalizing it because it almost preserved 90% of information. <br>
+The Supervised classification algorithm such as Random Forest,KNN,Gaussian Naive Bayes,Logistic Regression, Support Vector Machines.<br>
+Results :<br>
+
+The fold score in the table are calculated in such a way that if fold 1 is stated then fold 1 will be taken for testing(validation score) and rest all the folds are used for the training score.<br>
+
+SVM clearly is much effective in classification than other algorithms with 0.939 F1 Score and then with slight difference Logistic Regression also can be effective algorithm for prediction, Gaussian Naive Bayes performed poorly on the data as it has strong assumption of normal distribution on features where as knn performed also good but not above 0.88 F1 score , random forest overfits the data.
+
+
+
+
+
 
 
 
