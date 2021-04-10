@@ -125,6 +125,14 @@ As the deadline permitted me to perform these six experiments here are the list 
 - Use Word2vec also to try with LSTM 
 - Use tsne on the data to check if the data could be visualise and Classified by the plots.
 
+## References
+1. Geek For Geeks
+2. Medium
+3. Stack Overflow
+4. Sklearn Documentation
+5. Keras Documentation
+6. Approaching Almost any Machine Learning Problem -Abhisek Thakur
+
  
  
 
