@@ -77,12 +77,34 @@ The MLP reaches upto 0.93 validation but still SVC is performing better than the
 *Note : All the above Experiments are performed on the corpus which were lemmatized*
 
 ## 4. Applying the above alogrithm by processing the Description with the help of stemming
- Snowball Stemmer was used on the corpus to cut down the vocab size and now the vocab size was 20340 which was further reduced to 3500 features after tf-idf vectorisation and then the machine learning algorithms were checked for the results.
- Result :
+ Snowball Stemmer was used on the corpus to cut down the vocab size and now the vocab size was 20340 which was further reduced to 3500 features after tf-idf vectorisation and then the machine learning algorithms were checked for the results.<br>
+ Result :<br>
 <img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp4train.PNG>
 <img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp4val.PNG>
 
 Stemming are giving slightly good results then lemmatization with nearly 0.95 F1 score for validation. 
+
+## 5.Using SVD(Singular Value Decomposition) instead of PCA for dimensionality reduction of the stemmed tf-idf dataset and then applying Classification algorithms
+The dataset was sparse and generally SVD are applied on the dataset whereas PCA is used for Dense Data,so we standardize the tf-idf data and then apply SVD on it to find the results with 3500 features.<br>
+
+Results: <br>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp5train.PNG>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp5val.PNG>
+
+PCA is performing better than SVD as the classification algorithms are overfitting and are not generalized to predict on the testing dataset as seen in the validation score.
+
+## 6. Applying LSTM along with GloVe Embedding Layer on the corpus
+GloVe Embedding Vectors are used to make a dictionary where key are words and 50 dimensional vectors are values.Then the best fold i.e fold=3 has given me optimum results is used to test the data and rest all the folds are used to train.<br>
+
+Results:<br>
+F1 Score = 0.02526075782273468
+
+The results were very poor as the LSTM layers are not generalizing on the data.
+
+
+
+
+
  
 
 
