@@ -45,7 +45,9 @@ As the Category of Product were skewed (i.e imbalanced) Stratified K fold cross 
 # Experiments
 
 ## 1. Applying Machine Learning Algorithms with Bag Of Words 
-Vectorisation of Bag of Words gave an array with feature of 23042 , due to the problem of curse of dimensionality i reduced the dimension of features to 1600 using PCA(principal component analysis) after normalizing it because it almost preserved 90% of information. <br>
+Vectorisation of Bag of Words gave an array with feature of 23042 , due to the problem of curse of dimensionality i reduced the dimension of features to 1600 using PCA(principal component analysis) after normalizing it because it almost preserved 90% of information.<br>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp1info.PNG>
+
 The Supervised classification algorithm such as Random Forest,KNN,Gaussian Naive Bayes,Logistic Regression, Support Vector Machines.<br>
 Results :<br>
 <img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp1train.PNG><br>
@@ -53,6 +55,35 @@ The fold score in the table are calculated in such a way that if fold 1 is state
 <img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp1val.PNG><br>
 
 SVM clearly is much effective in classification than other algorithms with 0.939 F1 Score and then with slight difference Logistic Regression also can be effective algorithm for prediction, Gaussian Naive Bayes performed poorly on the data as it has strong assumption of normal distribution on features where as knn performed also good but not above 0.88 F1 score , random forest overfits the data.
+
+
+## 2. Applying Machine Learning Algorithms with Tf-Idf
+Now corpus was vectorised using term frequency inverse document frequency formula and then its dimensionality was reduced to 3500 for 90% of Information preservation using PCA.<br>
+Results :<br>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp2train.PNG>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp2val.PNG>
+
+SVC again outperforms every other algorithm with 0.9482 F1 score for validation set and moreover tf-idf has performed better than Bag of Words.
+
+## 3. MLP(Multi Layer Perceptron) with Tf-Idf
+
+As Logistic Regression Performing was performing really well in the problem then i tried to use Neural Nets for this problem with 5 Hidden Layers.The loss was taken to be categorical cross entropy and the optimiser was choosen as Adam.
+
+Results:<br>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp3res.PNG>
+<br>
+The MLP reaches upto 0.93 validation but still SVC is performing better than the Neural Networks and Adam optimizer is one of the best choices to choose.
+
+*Note : All the above Experiments are performed on the corpus which were lemmatized*
+
+## 4. Applying the above alogrithm by processing the Description with the help of stemming
+ Snowball Stemmer was used on the corpus to cut down the vocab size and now the vocab size was 20340 which was further reduced to 3500 features after tf-idf vectorisation and then the machine learning algorithms were checked for the results.
+ Result :
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp4train.PNG>
+<img src=https://github.com/NishantSushmakar/Flipkart-Category-Prediction/blob/main/images/exp4val.PNG>
+
+Stemming are giving slightly good results then lemmatization with nearly 0.95 F1 score for validation. 
+ 
 
 
 
